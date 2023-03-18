@@ -1,12 +1,17 @@
 {
   "compilerOptions": {
-    "types": ["node", "jest", "@testing-library/jest-dom"],
-    "target": "es5",
+    "types": ["ES6", "jest", "@testing-library/jest-dom"],
+    "target": "es6",
     "lib": [
+      "es6",
       "dom",
       "dom.iterable",
       "esnext"
     ],
+    "baseUrl": "src",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -22,6 +27,6 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "*/src"
   ]
 }
