@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
 .App {
+  cursor: none;
+  position: relative;
   font-family: 'Noto Sans KR', serif;
-
-  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
 }
 
 .App-logo {
@@ -18,7 +21,6 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
