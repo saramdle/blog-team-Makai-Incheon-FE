@@ -1,22 +1,8 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
+import type { CardPropType } from 'types/CardTypes';
 import Box from '@mui/material/Box';
-import { Typography } from '@mui/material';
 import TagList from '../tagList/TagList.';
-
-interface ChipData {
-    key: number;
-    label: string;
-}
-
-interface CardProps {
-    tagDataObject: Array<ChipData>;
-    title: string;
-    content: string;
-    img: string | null | undefined;
-}
 
 // const content = (
 //     // <>
@@ -29,6 +15,8 @@ const StyledCard = styled.div`
     width: 100%;
     height: 100%;
     transition: 0.2s ease-out;
+    cursor: pointer;
+    overflow: hidden;
 
     &:hover {
         transform: translateY(-10px);
@@ -47,7 +35,7 @@ const CardTitle = styled.div`
     font-weight: bold;
 `;
 
-const CustomCard = (props: CardProps) => {
+const CustomCard = (props: CardPropType) => {
     const { title, content, tagDataObject, img } = props;
     return (
         <Box sx={{ width: 300, height: 380 }}>

@@ -12,9 +12,18 @@ const RowHeader = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px 0 10px 0;
 `;
 
-const RowContainer = styled.div``;
+const RowContainer = styled.div`
+    border-top: gray solid 1px;
+    border-bottom: gray solid 1px;
+
+    &:hover {
+        cursor: pointer;
+        background: linear-gradient(90deg, #def4ff 0%, rgba(222, 244, 255, 0) 100%);
+    }
+`;
 
 const RowMargin = styled.div`
     width: inherit;
@@ -27,6 +36,7 @@ const RowContentWrapper = styled.div`
 
 const RowContent = styled.div`
     width: 100%;
+    margin-top: 12px;
     text-overflow: ellipsis;
     overflow: hidden;
     display: -webkit-box;
@@ -41,8 +51,8 @@ const BoardRow: React.FC<RowDataType> = (props: RowDataType) => {
         <RowContainer>
             <RowMargin>
                 <RowHeader>
-                    <h2>{title}</h2>
-                    {date}
+                    <h5>{title}</h5>
+                    <p>{date}</p>
                 </RowHeader>
                 <hr />
                 <RowContentWrapper>

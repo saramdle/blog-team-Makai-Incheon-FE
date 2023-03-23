@@ -1,5 +1,6 @@
 module.exports = {
     env: {
+        node: true,
         browser: true,
         es2021: true,
     },
@@ -23,11 +24,12 @@ module.exports = {
         'react/jsx-curly-brace-presence': 'warn',
         'react/require-default-props': 'off',
         'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
-        'react/jsx-filename-extension': ['warn', { extensions: ['.tsx'] }],
+        'react/jsx-filename-extension': ['warn', { extensions: ['.ts', '.tsx'] }],
         'import/no-extraneous-dependencies': [
             'off',
             { devDependencies: false, optionalDependencies: false, peerDependencies: false },
         ],
+        'import/no-unresolved': [2, { caseSensitive: false }],
         'import/extensions': [
             'error',
             'ignorePackages',
@@ -41,8 +43,12 @@ module.exports = {
         ],
     },
     settings: {
+        'import/parsers': {
+            '@typescript-eslint/parser': ['.ts', 'tsx'],
+        },
         'import/resolver': {
             node: {
+                moduleDirectory: ['src/', 'node_modules'],
                 extensions: ['.js', '.jsx', '.ts', '.tsx'],
             },
         },

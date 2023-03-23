@@ -1,31 +1,24 @@
 import React, { useState } from 'react';
 import { Chip } from '@mui/material';
-import { blue, grey } from '@mui/material/colors';
-import { Simulate } from 'react-dom/test-utils';
-import click = Simulate.click;
+import type { ChipDataType, TagListProps } from 'types/TagTypes';
+import styled from '@emotion/styled';
 
-interface ChipData {
-    key: number;
-    label: string;
-}
-
-interface TagListProps {
-    deletable: boolean;
-    clickable: boolean;
-    dataObject: Array<ChipData>;
-}
+const TagContainer = styled.div`
+    display: flex;
+    gap: 10px;
+`;
 
 const TagList: React.FC<TagListProps> = (props: TagListProps) => {
     const { clickable, deletable, dataObject } = props;
 
-    const [selected, setSelected] = useState<ChipData[]>([]);
-    const [tags, setTags] = useState<ChipData[]>(dataObject);
+    const [selected, setSelected] = useState<ChipDataType[]>([]);
+    const [tags, setTags] = useState<ChipDataType[]>(dataObject);
 
-    const handleDelete = (chipToDelete: ChipData) => () => {
+    const handleDelete = (chipToDelete: ChipDataType) => () => {
         setTags(() => tags.filter((chip) => chip.key !== chipToDelete.key));
     };
 
-    const handleClick = (chip: ChipData) => {
+    const handleClick = (chip: ChipDataType) => {
         if (selected.includes(chip)) {
             setSelected(() => selected.filter((data) => data.key !== chip.key));
         } else {
@@ -34,7 +27,7 @@ const TagList: React.FC<TagListProps> = (props: TagListProps) => {
     };
 
     return (
-        <div>
+        <TagContainer>
             {tags.map((data) => {
                 const isInclude = selected.includes(data);
                 return (
@@ -50,7 +43,7 @@ const TagList: React.FC<TagListProps> = (props: TagListProps) => {
                     />
                 );
             })}
-        </div>
+        </TagContainer>
     );
 };
 export default TagList;
