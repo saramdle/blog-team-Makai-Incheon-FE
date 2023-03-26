@@ -8,7 +8,7 @@ const CursorStyle = styled.div`
     width: 20px;
     height: 20px;
     border-radius: 10px;
-    z-index: 999;
+    z-index: 101;
     //transition: 0.s ease;
     background: #fff;
     mix-blend-mode: difference;
@@ -33,9 +33,9 @@ const Cursor = () => {
 
     const toggleCursorSize = () => {
         if (cursorEnlarged.current) {
-            dot.current.style.transform = 'translate(-50%, calc(-50% - 100px)) scale(1)';
+            dot.current.style.transform = 'translate(-50%, -50%) scale(1)';
         } else {
-            dot.current.style.transform = 'translate(-50%,  calc(-50% - 100px)) scale(3)';
+            dot.current.style.transform = 'translate(-50%, -50%) scale(3)';
         }
     };
 
@@ -85,6 +85,7 @@ const Cursor = () => {
             document.removeEventListener('mousedown', mouseOverEvent);
             document.removeEventListener('mouseup', mouseOutEvent);
             document.removeEventListener('mousemove', mouseMoveEvent);
+
             document.removeEventListener('mouseenter', mouseEnterEvent);
             document.removeEventListener('mouseleave', mouseLeaveEvent);
         };

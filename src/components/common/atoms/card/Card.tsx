@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 import type { CardPropType } from 'types/CardTypes';
 import Box from '@mui/material/Box';
+import { useNavigate } from 'react-router';
 import TagList from '../tagList/TagList.';
 
 // const content = (
@@ -10,7 +11,7 @@ import TagList from '../tagList/TagList.';
 //     // </>
 // );
 const StyledCard = styled.div`
-    border: #676767 1px solid;
+    border: #a3a3a3 1px solid;
     border-radius: 15px;
     width: 100%;
     height: 100%;
@@ -36,9 +37,13 @@ const CardTitle = styled.div`
 `;
 
 const CustomCard = (props: CardPropType) => {
-    const { title, content, tagDataObject, img } = props;
+    const { uid, title, content, tagDataObject, img } = props;
+    const navigate = useNavigate();
+    const handleCardClick = () => {
+        navigate(`/list/${uid}`);
+    };
     return (
-        <Box sx={{ width: 300, height: 380 }}>
+        <Box sx={{ width: 300, height: 380 }} onClick={handleCardClick}>
             <StyledCard>
                 <CardContent>
                     <CardTitle>{title}</CardTitle>

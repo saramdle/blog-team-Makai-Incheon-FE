@@ -1,14 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { GnbIconType } from 'types/GnbIconType';
 
-interface GnbIconType {
-    image: string;
-    description: string;
-    // onHover?: () => void;
-    // onLeave?: () => void;
-}
-
-const Wrapper = styled.div`
+const Wrapper = styled.a`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,13 +18,13 @@ const ImgBox = styled.img`
 `;
 
 const TextBox = styled.p`
-    font-size: 0.825rem;
-`
+    font-size: 0.625rem;
+`;
 
 const GnbIcon = (props: GnbIconType) => {
-    const { image, description } = props;
+    const { image, description, onclick, link } = props;
     return (
-        <Wrapper>
+        <Wrapper onClick={onclick}>
             <ImgBox src={image} alt="" />
             <TextBox>{description}</TextBox>
         </Wrapper>

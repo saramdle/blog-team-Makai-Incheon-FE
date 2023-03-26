@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { useNavigate } from 'react-router';
 import TagList from '../tagList/TagList.';
 
 interface RowDataType {
+    uid: number;
     title: string;
     content: string;
     date: string;
@@ -45,10 +47,21 @@ const RowContent = styled.div`
     line-height: 24px;
     height: 72px;
 `;
+
 const BoardRow: React.FC<RowDataType> = (props: RowDataType) => {
-    const { title, content, date } = props;
+    const { uid, title, content, date } = props;
+    const navigate = useNavigate();
+
+    const handleRowClick = () => {
+        navigate(`/list/${uid}`);
+    };
+
     return (
-        <RowContainer>
+        <RowContainer
+            onClick={() => {
+                handleRowClick();
+            }}
+        >
             <RowMargin>
                 <RowHeader>
                     <h5>{title}</h5>
